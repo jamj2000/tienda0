@@ -1,0 +1,24 @@
+{
+  "name": "tareas",
+  "version": "1.0.0",
+  "description": "Aplicación para gestionar tareas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"   
+  },
+  "keywords": [
+    "node",
+    "tareas",
+    "javascript"
+  ],
+  "author": "José Antonio Muñoz Jiménez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.2"
+  }
+}
