@@ -1,1 +1,72 @@
-<h1>Hola mundo</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Inicio</title>
+
+  <!-- Versiones posteriores de JQuery pueden hacer fallar Toastr -->
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+
+  <!-- Desde https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+ 
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tareas">Tareas</a>
+          </li>     
+        </ul>
+     
+      </div>
+    </nav>
+  
+
+
+  <main>
+
+
+<a class="btn btn-info" onclick="toastr.info('Hi! I am info message.');">Info message</a>
+<a class="btn btn-warning" onclick="toastr.warning('Hi! I am warning message.');">Warning message</a>
+<a class="btn btn-success" onclick="toastr.success('Hi! I am success message.');">Success message</a>
+<a class="btn btn-danger" onclick="toastr.error('Hi! I am error message.');">Error message</a>
+
+  <div id="root"></div>
+  </main>
+
+  <footer class="footer">
+      <div class="container">
+        <span class="text-muted">&copy; José Antonio</span>
+      </div>
+  </footer>
+
+  <!-- <script src="/index.js"></script> -->
+
+
+  <!-- <script src="/socket.io/socket.io.js"></script>
+    <script src="/realtime.js"></script> -->
+
+</body>
+
+</html>

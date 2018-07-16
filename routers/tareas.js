@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 });
 
 // ver una tarea 
-router.get('/:id', function(req, res) {
+router.get('/:id', (req, res) => {
     Tarea.findOne( {_id: req.params.id}, (err, data) => {
       if (err) res.json ({error: err});
       else     res.json (data);
@@ -38,6 +38,18 @@ router.post('/',  (req, res) => {
         else     res.json (data);   
     });  
 });
+
+
+router.put('/:id',  (req, res) => {
+    //const tarea = new Tarea({ nombre: req.body.nombre, descripcion: req.body.descripcion });
+    Tarea.findOneAndUpdate( {_id: req.params.id }, {$set: {nombre: req.body.nombre, descripcion: req.body.descripcion} }, (err, data) => {
+        if (err) res.json ({error: err});
+        else     res.json (data);
+      });
+});
+
+
+
 
 
 module.exports = router;

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Documento</title>
+
+  <!-- Versiones posteriores de JQuery pueden hacer fallar Toastr -->
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
+
+  <!-- Desde https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.9);
+      width: 100%;
+      position: fixed;
+      z-index: 100;
+    }
+
+    main {
+      min-height: 900px;
+    }
+
+    nav ul {
+      list-style: none;
+      overflow: hidden;
+      /* Limpiamos errores de float */
+    }
+
+    ul.menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333333;
+      width: 100%;
+    }
+
+    ul.menu>li {
+      float: left;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    ul.menu>li>a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    ul.menu>li>a:hover {
+      background-color: #111111;
+    }
+
+    .seccion {
+      padding-top: 80px;
+
+    }
+
+    footer {
+      background-color: #0e012c;
+      color: #ffffff;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: 30px;
+      width: 100%;
+      padding-left: 20px;
+      overflow: hidden;
+    }
+
+    p {
+      display: block;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li> <a class="opcion" name="tareas" href="#tareas">Tareas</a>  </li>
+        <li> <a class="opcion" name="productos" href="#productos">Productos</a>  </li>
+        <li> <a class="opcion" name="compras" href="#compras">Compras</a>  </li>
+        <li> <a class="opcion" name="ventas" href="#ventas">Ventas</a>  </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="contenido"  class="jumbotron">
+    <div class="seccion" id="tareas" style="min-height:200px">
+      <h1>Tareas</h1>
+    </div>
+    <div class="seccion" id="productos" style="min-height:200px">
+      <h1>Productos</h1>
+    </div>
+    <div class="seccion" id="compras" style="min-height:200px">
+      <h1>Compras</h1>
+    </div>
+    <div class="seccion" id="ventas" style="min-height:200px">
+      <h1>Ventas</h1>
+    </div>
+  </main>
+  <footer> (c) José Antonio </p>
+    <script>
+      window.addEventListener('load', ocultarSecciones("seccion"));
+      [].forEach.call(document.getElementsByClassName("opcion"), function (el) {
+        el.addEventListener('click', function (event) { event.preventDefault(); verSeccion(el.name) });
+      });
+      let ventas = document.getElementById("ventas");
+
+
+function eliminarTarea (id) {
+  fetch('/tareas/'+id, { method: 'DELETE' })
+    .then ( res => res.json())
+    .then ( data => console.log(data) );
+}
+
+
+
+      function ocultarSecciones(clase) {
+        //[].slice.call(document.getElementsByClassName("seccion")).forEach ( function (el) { el.style.display="none" });
+        [].forEach.call(document.getElementsByClassName(clase), function (el) { el.style.display = "none" });
+      }
+
+      function crear (tag, id, clase, estilo) {
+        let el = document.createElement(tag);
+        el.setAttribute ('class', clase);
+        el.setAttribute ('id', id);
+        el.setAttribute ('style', estilo); 
+
+        return el;     
+      }
+
+
+      function verSeccion(id) {
+        [].forEach.call(document.getElementsByClassName("seccion"), function (id) { id.style.display = "none" });
+
+        let p; 
+        let v = document.getElementById(id);
+        v.remove();
+
+        division = crear ('div', id, 'seccion list-group', 'display : block');
+        let titulo = document.createElement('h1');
+        titulo.textContent = id;
+        division.appendChild(titulo);
+        document.getElementById('contenido').appendChild(division);
+
+        fetch('/tareas')
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (jsondata) {                         
+            jsondata.map(id => {
+              p = document.createElement('p');
+              p.setAttribute('id', id._id)
+              p.setAttribute('class', 'list-group-item');
+              p.textContent = id._id + ' '  + id.descripcion;
+              p.style.display = "block";
+
+              let b=crear('button', 'u-'+id._id, 'btn btn-info', 'margin-left: 20px');
+              b.textContent = 'Editar';
+              p.appendChild(b);
+ 
+              b=crear('button', 'u-'+id._id, 'btn btn-danger', 'margin-left: 20px');
+              b.textContent = 'Borrar';
+              // b.setAttribute('onclick', 'toastr.error("Vas a eliminar un elemento")');
+              b.addEventListener ('click', function () {  
+                fetch('/tareas/'+ id._id, { method: 'DELETE' })
+                  .then ( res => res.json())
+                  .then ( data => console.log(data) );
+              });
+
+              p.appendChild(b);
+
+              division.appendChild(p);
+            });
+          });
+
+      }
+    </script>
+
+</body>
+
+</html>
