@@ -8,7 +8,7 @@ const config   = require('./config');
 const app      = express();
 
 
-mongoose.connect(config.db_uri)
+mongoose.connect(config.db_uri, { useNewUrlParser: true })
   .then(db   => console.log ('Conexión correcta a la BD'))
   .catch(err => console.log ('Error en la conexión a la BD'));
 
@@ -25,17 +25,17 @@ app.use(express.static(path.join(__dirname , 'public')));
 // Servidor
 const server = app.listen (config.port, () => console.log(`Servidor iniciado en puerto ${config.port}`));
 
+// Conexión en tiempo real con Websockets (módulo socket.io)
+const io     = socketio.listen (server);
 
-// const io     = socketio.listen (server);
-
-// io.on('connection', (socket) => { 
-//     console.log (`- Nueva conexión en tiempo real ${socket.id}`) 
+io.on('connection', (socket) => { 
+    console.log (`- Nueva conexión en tiempo real ${socket.id}`) 
     
-//     socket.emit ('saludo', { mensaje: 'Hola desde el servidor'} );
+    socket.emit ('saludo', { mensaje: 'Hola desde el servidor'} );
     
-//     socket.on ('cambio en BD', (data) => { 
-//       console.log(data) 
-//       //io.sockets.emit(data);
-//     });
+    socket.on ('cambio en BD', (data) => { 
+      console.log(data) 
+      //io.sockets.emit(data);
+    });
    
-// });
+});

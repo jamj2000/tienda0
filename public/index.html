@@ -18,56 +18,62 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   Comentado para eliminar aviso de scripts de sitio no seguro. Usamos archivos locales -->
- 
 
- 
+
+
   <link rel="stylesheet" href="css/toastr.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
- 
+
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Inicio
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tareas">Tareas</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+
+  <main class="jumbotron">
+
+    <h1>Página de inicio de proyecto</h1>
+    <p>Este proyecto está en una fase inicial. A continuación hay algunos enlaces funcionales, a modo de pruebas.</p>
+    <a class="btn btn-info" onclick="toastr.info('Hi! I am info message.');">Info message</a>
+    <a class="btn btn-warning" onclick="toastr.warning('Hi! I am warning message.');">Warning message</a>
+    <a class="btn btn-success" onclick="toastr.success('Hi! I am success message.');">Success message</a>
+    <a class="btn btn-danger" onclick="toastr.error('Hi! I am error message.');">Error message</a>
     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/tareas">Tareas</a>
-          </li>     
-        </ul>
-     
-      </div>
-    </nav>
-  
-
-
-  <main>
-
-
-<a class="btn btn-info" onclick="toastr.info('Hi! I am info message.');">Info message</a>
-<a class="btn btn-warning" onclick="toastr.warning('Hi! I am warning message.');">Warning message</a>
-<a class="btn btn-success" onclick="toastr.success('Hi! I am success message.');">Success message</a>
-<a class="btn btn-danger" onclick="toastr.error('Hi! I am error message.');">Error message</a>
-
-  <div id="root"></div>
+    <br /><br /><br /><br />
+    <div class="container row">
+       <p class=" col-sm-4"></p>
+       <p class=" col-sm-4"></p>
+       <a class="btn btn-info col-sm-4" href="/app.html">Applicación web</a>
+    </div>
   </main>
 
   <footer class="footer">
-      <div class="container">
-        <span class="text-muted">&copy; José Antonio</span>
-      </div>
+     <span class="text-muted">JAMJ 2018</span>
   </footer>
 
-  <!-- <script src="/index.js"></script> -->
 
 
   <!-- <script src="/socket.io/socket.io.js"></script> -->
