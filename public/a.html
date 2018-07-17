@@ -17,10 +17,11 @@
       background-color: #bbb;
       padding-bottom: 80px;
       font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
     }
 
-    header {
-      background: rgba(0, 0, 0, 0.9);
+    nav {
+      background-color: #030338;
       width: 100%;
       position: fixed;
       z-index: 100;
@@ -28,6 +29,19 @@
 
     main {
       padding-left: 40px;
+    }
+
+    footer {
+      color: #ffffff;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: 30px;
+      width: 100%;
+      padding-left: 20px;
+      overflow: hidden;
+      background: rgba(3, 0, 51, 0.9);
+      font-size: 12px;
     }
 
     nav ul {
@@ -40,15 +54,14 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: #333333;
       width: 100%;
     }
 
-    ul.menu>li {
+    ul.menu>a {
       float: left;
     }
 
-    ul.menu>li>a {
+    ul.menu>a {
       display: block;
       color: white;
       text-align: center;
@@ -57,200 +70,213 @@
       font-size: 16px;
     }
 
-    ul.menu>li>a:hover {
-      background-color: #111111;
+    ul.menu>a:hover {
+      cursor: pointer;
     }
 
     .seccion {
       padding-top: 80px;
-
     }
 
-    footer {
-      background-color: #333333;
-      color: #ffffff;
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      height: 30px;
-      width: 100%;
-      padding-left: 20px;
-      overflow: hidden;
+    input {
+      padding: 10px;
+      background-color:  #7171f7;
+      border-radius: 6px;
+      font-size: 14px;
+      color: black;
+      border: none;
+      margin-left: 5px;
+      margin-bottom: 4px;
+    }
+    
+    input:focus {
+      background-color: #fdebc9;
     }
 
-    #item {
-      display: block;
+    button {
+      padding: 10px;
+      border-radius: 6px;
+      background-color: #2b2b9b;
+      border: none;
+      font-size: 14px;
+      color: white;
+      margin-left: 20px;
+      margin-bottom: 4px;
     }
+
+    button:hover {
+      background-color: #fdebc9;
+      color: black;
+    }
+
+
   </style>
 
 </head>
 
 <body>
-  <header>
-    <nav>
-      <ul class="menu">
-        <li> 
-          <a class="opcion" name="tareas" href="#tareas">Tareas</a>
-        </li>
-        <li>
-          <a class="opcion" name="productos" href="#productos">Productos</a>
-        </li>
-        <li>
-          <a class="opcion" name="compras" href="#compras">Compras</a>
-        </li>
-        <li>
-          <a class="opcion" name="ventas" href="#ventas">Ventas</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+
+  <nav>
+    <ul class="menu">
+      <a class="opcion" name="inicio">Inicio</a>
+      <a class="opcion" name="tareas">Tareas</a>
+      <a class="opcion" name="articulos">Artículos</a>
+    </ul>
+  </nav>
+
 
   <main id="contenido">
-    <div class="seccion" id="tareas" style="min-height:200px">
-      <h1>Tareas</h1>
-    </div>
-    <div class="seccion" id="productos" style="min-height:200px">
-      <h1>Productos</h1>
-    </div>
-    <div class="seccion" id="compras" style="min-height:200px">
-      <h1>Compras</h1>
-    </div>
-    <div class="seccion" id="ventas" style="min-height:200px">
-      <h1>Ventas</h1>
-    </div>
+    <div class="seccion" id="inicio" style="min-height:200px"></div>
+    <div class="seccion" id="tareas" style="min-height:200px"></div>
+    <div class="seccion" id="articulos" style="min-height:200px"></div>
   </main>
-  <footer> Página simple, con pocos estilos </p>
-    <script>
-      window.addEventListener('load', ocultarSecciones("seccion"));
-      [].forEach.call(document.getElementsByClassName("opcion"), function (el) {
-        el.addEventListener('click', function (event) { event.preventDefault(); verSeccion(el.name) });
+
+  <footer> Página simple, sin bootstrap </footer>
+
+
+  <script>
+    window.addEventListener('load', function () {
+      [].forEach.call(document.getElementsByClassName('seccion'), function (el) {
+        el.setAttribute('style', 'display: none')
       });
-      let ventas = document.getElementById("ventas");
+      resetMenu();
+    });
 
 
-      function ocultarSecciones(clase) {
-        //[].slice.call(document.getElementsByClassName("seccion")).forEach ( function (el) { el.style.display="none" });
-        [].forEach.call(document.getElementsByClassName(clase), function (el) { el.style.display = "none" });
-      }
+    function resetMenu() {
+      [].forEach.call(document.getElementsByClassName("opcion"), function (el) {
+        el.addEventListener('click', function (event) {
+          event.preventDefault();
+          refrescarMenu();
+          verSeccion(el.name);
+          this.setAttribute('style', 'background-color: #bbb; color: #000');
+        });
 
-     
-      function verSeccion(id) {
-        [].forEach.call(document.getElementsByClassName("seccion"), function (id) { id.style.display = "none" });
+      });
+    }
 
-        let division, titulo, d, i, i1, i2, b;
+    function refrescarMenu() {
+      [].forEach.call(document.getElementsByClassName("opcion"), function (el) {
+        el.setAttribute('style', 'background-color: rgba(0, 0, 0, 0); color: #fff');
+      });
+      [].forEach.call(document.getElementsByClassName("seccion"), function (el) {
+        el.setAttribute('style', 'display: none');
+      });
 
-        // Eliminamos sección
-        document.getElementById(id).remove();
-        // y volvemos a crearla vacía
-        division = crearNodo('div', id, 'seccion', 'display: block');
+    }
 
-        titulo = document.createElement('h1');
-        titulo.textContent = id;
-        division.appendChild(titulo);
-        document.getElementById('contenido').appendChild(division);
 
-        d = document.createElement('div');
-        d.setAttribute('class', 'item');
+    function crearNodo(tag, id, clase, estilo) {
+      let el = document.createElement(tag);
 
-        i1 = document.createElement('input');
-        i1.setAttribute('type', 'text');
-        i1.setAttribute('name', 'nombre');
-        i1.setAttribute('enabled', 'enabled');
-        d.appendChild(i1);
+      el.setAttribute('id', id);
+      el.setAttribute('class', clase);
+      el.setAttribute('style', estilo);
 
-        i2 = document.createElement('input');
-        i2.setAttribute('type', 'text');
-        i2.setAttribute('name', 'descripcion');
-        i2.setAttribute('enabled', 'enabled');
-        d.appendChild(i2);
+      return el;
+    }
 
-        b = crearNodo('button', 'insertar', '', 'margin-left: 20px');
-        b.textContent = 'Insertar';
+    function crearItem(item) {
+      let d, i1, i2, b;
 
-        b.addEventListener('click', function () {
-          fetch('/tareas', {
-            method: 'POST',
-            body: JSON.stringify({ nombre: i1.value, descripcion: i2.value }),
-            headers: { 'Content-Type': 'application/json' }
-          }).then(res => res.json())
+      d = document.createElement('div');
+
+      i1 = document.createElement('input');
+      i1.setAttribute('type', 'text');
+      i1.setAttribute('value', item.nombre);
+      d.appendChild(i1);
+
+      i2 = document.createElement('input');
+      i2.setAttribute('type', 'text');
+      i2.setAttribute('value', item.descripcion);
+      d.appendChild(i2);
+
+      b = crearNodo('button', '', '', '');
+      b.textContent = 'Modificar';
+
+      b.addEventListener('click', function () {
+        console.log(i1.name.toString(), i1.value);
+        console.log(i2.name.toString(), i2.value);
+
+        fetch('/tareas/' + item._id, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre: i1.value, descripcion: i2.value })
+        }).then(res => res.json())
+          .then(data => { console.log(data) });
+      });
+      d.appendChild(b);
+
+
+      b = crearNodo('button', '', '', '');
+      b.textContent = 'Borrar';
+      // b.setAttribute('onclick', 'toastr.error("Vas a eliminar un elemento")');
+      b.addEventListener('click', function () {
+        // if (confirm("La tarea " + item.nombre + " va a ser eliminada. ¿Está seguro?")) {
+          fetch('/tareas/' + item._id, { method: 'DELETE' })
+            .then(res => res.json())
             .then(data => console.log(data));
-        });
-        d.appendChild(b);
+        // }
+      });
+      d.appendChild(b);
 
-        division.appendChild(d);
+      return d;
+    }
 
-        fetch('/tareas')
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (jsondata) {
-            jsondata.map(item => {
-              d = crearItem(item);
-              division.appendChild(d);
-            });
+
+    function verSeccion(id) {
+      let division, titulo, d, i, i1, i2, b;
+
+      // Eliminamos sección
+      document.getElementById(id).remove();
+      // y volvemos a crearla sin datos
+      division = crearNodo('div', id, 'seccion', 'display: block');
+
+
+      document.getElementById('contenido').appendChild(division);
+
+      d = document.createElement('div');
+      d.setAttribute('class', 'item');
+
+      i1 = document.createElement('input');
+      i1.setAttribute('type', 'text');
+      i1.setAttribute('name', 'nombre');
+      i1.setAttribute('enabled', 'enabled');
+      d.appendChild(i1);
+
+      i2 = document.createElement('input');
+      i2.setAttribute('type', 'text');
+      i2.setAttribute('name', 'descripcion');
+      i2.setAttribute('enabled', 'enabled');
+      d.appendChild(i2);
+
+      b = crearNodo('button', 'insertar', '', '');
+      b.textContent = 'Insertar';
+
+      b.addEventListener('click', function () {
+        fetch('/tareas', {
+          method: 'POST',
+          body: JSON.stringify({ nombre: i1.value, descripcion: i2.value }),
+          headers: { 'Content-Type': 'application/json' }
+        }).then(res => res.json())
+          .then(data => console.log(data));
+      });
+      d.appendChild(b);
+
+      division.appendChild(d);
+
+      fetch('/tareas')
+        .then(function (response) { return response.json() })
+        .then(function (jsondata) {
+          jsondata.map(function (item) {
+            d = crearItem(item);
+            division.appendChild(d);
           });
-
-      }
-
-       function crearNodo (tag, id, clase, estilo) {
-        let el = document.createElement(tag);
-
-        el.setAttribute('id', id);
-        el.setAttribute('class', clase);
-        el.setAttribute('style', estilo);
-
-        return el;
-      }
-
-      function crearItem(item) {
-        let d, i1, i2, b;
-
-        d = document.createElement('div');
-        d.setAttribute('class', 'item');
-
-        i1 = document.createElement('input');
-        i1.setAttribute('type', 'text');
-        i1.setAttribute('value', item.nombre);
-        d.appendChild(i1);
-
-        i2 = document.createElement('input');
-        i2.setAttribute('type', 'text');
-        i2.setAttribute('value', item.descripcion);
-        d.appendChild(i2);
-
-        b = crearNodo('button', '', '', 'margin-left: 20px');
-        b.textContent = 'Modificar';
-
-        b.addEventListener('click', function () {
-          console.log(i1.name.toString(), i1.value);
-          console.log(i2.name.toString(), i2.value);
-
-          fetch('/tareas/' + item._id, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombre: i1.value, descripcion: i2.value })
-          }).then(res => res.json())
-            .then(data => { console.log(data) });
         });
-        d.appendChild(b);
 
+    }
 
-        b = crearNodo('button', '', '', 'margin-left: 20px');
-        b.textContent = 'Borrar';
-        // b.setAttribute('onclick', 'toastr.error("Vas a eliminar un elemento")');
-        b.addEventListener('click', function () {
-          if (confirm("La tarea " + item.nombre + " va a ser eliminada. ¿Está seguro?")) {
-            fetch('/tareas/' + item._id, { method: 'DELETE' })
-              .then(res => res.json())
-              .then(data => console.log(data));
-          }
-        });
-        d.appendChild(b);
-
-        return d;
-      }
-
-    </script>
+  </script>
 
 </body>
 
