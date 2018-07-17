@@ -7,21 +7,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Documento</title>
 
-  <!-- Versiones posteriores de JQuery pueden hacer fallar Toastr -->
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-
-
-  <!-- Desde https://getbootstrap.com/docs/4.0/getting-started/introduction/ -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
   <style>
     * {
       margin: 0;
       padding: 0;
+    }
+
+    body {
+      background-color: #bbb;
+      padding-bottom: 80px;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     header {
@@ -32,13 +27,12 @@
     }
 
     main {
-      min-height: 900px;
+      padding-left: 40px;
     }
 
     nav ul {
       list-style: none;
       overflow: hidden;
-      /* Limpiamos errores de float */
     }
 
     ul.menu {
@@ -52,7 +46,6 @@
 
     ul.menu>li {
       float: left;
-      font-family: Arial, Helvetica, sans-serif;
     }
 
     ul.menu>li>a {
@@ -74,7 +67,7 @@
     }
 
     footer {
-      background-color: #0e012c;
+      background-color: #333333;
       color: #ffffff;
       position: fixed;
       left: 0;
@@ -85,7 +78,7 @@
       overflow: hidden;
     }
 
-    p {
+    #item {
       display: block;
     }
   </style>
@@ -96,15 +89,23 @@
   <header>
     <nav>
       <ul class="menu">
-        <li> <a class="opcion" name="tareas" href="#tareas">Tareas</a>  </li>
-        <li> <a class="opcion" name="productos" href="#productos">Productos</a>  </li>
-        <li> <a class="opcion" name="compras" href="#compras">Compras</a>  </li>
-        <li> <a class="opcion" name="ventas" href="#ventas">Ventas</a>  </li>
+        <li> 
+          <a class="opcion" name="tareas" href="#tareas">Tareas</a>
+        </li>
+        <li>
+          <a class="opcion" name="productos" href="#productos">Productos</a>
+        </li>
+        <li>
+          <a class="opcion" name="compras" href="#compras">Compras</a>
+        </li>
+        <li>
+          <a class="opcion" name="ventas" href="#ventas">Ventas</a>
+        </li>
       </ul>
     </nav>
   </header>
 
-  <main id="contenido"  class="jumbotron">
+  <main id="contenido">
     <div class="seccion" id="tareas" style="min-height:200px">
       <h1>Tareas</h1>
     </div>
@@ -118,7 +119,7 @@
       <h1>Ventas</h1>
     </div>
   </main>
-  <footer> (c) José Antonio </p>
+  <footer> Página simple, con pocos estilos </p>
     <script>
       window.addEventListener('load', ocultarSecciones("seccion"));
       [].forEach.call(document.getElementsByClassName("opcion"), function (el) {
@@ -127,74 +128,128 @@
       let ventas = document.getElementById("ventas");
 
 
-function eliminarTarea (id) {
-  fetch('/tareas/'+id, { method: 'DELETE' })
-    .then ( res => res.json())
-    .then ( data => console.log(data) );
-}
-
-
-
       function ocultarSecciones(clase) {
         //[].slice.call(document.getElementsByClassName("seccion")).forEach ( function (el) { el.style.display="none" });
         [].forEach.call(document.getElementsByClassName(clase), function (el) { el.style.display = "none" });
       }
 
-      function crear (tag, id, clase, estilo) {
-        let el = document.createElement(tag);
-        el.setAttribute ('class', clase);
-        el.setAttribute ('id', id);
-        el.setAttribute ('style', estilo); 
-
-        return el;     
-      }
-
-
+     
       function verSeccion(id) {
         [].forEach.call(document.getElementsByClassName("seccion"), function (id) { id.style.display = "none" });
 
-        let p; 
-        let v = document.getElementById(id);
-        v.remove();
+        let division, titulo, d, i, i1, i2, b;
 
-        division = crear ('div', id, 'seccion list-group', 'display : block');
-        let titulo = document.createElement('h1');
+        // Eliminamos sección
+        document.getElementById(id).remove();
+        // y volvemos a crearla vacía
+        division = crearNodo('div', id, 'seccion', 'display: block');
+
+        titulo = document.createElement('h1');
         titulo.textContent = id;
         division.appendChild(titulo);
         document.getElementById('contenido').appendChild(division);
+
+        d = document.createElement('div');
+        d.setAttribute('class', 'item');
+
+        i1 = document.createElement('input');
+        i1.setAttribute('type', 'text');
+        i1.setAttribute('name', 'nombre');
+        i1.setAttribute('enabled', 'enabled');
+        d.appendChild(i1);
+
+        i2 = document.createElement('input');
+        i2.setAttribute('type', 'text');
+        i2.setAttribute('name', 'descripcion');
+        i2.setAttribute('enabled', 'enabled');
+        d.appendChild(i2);
+
+        b = crearNodo('button', 'insertar', '', 'margin-left: 20px');
+        b.textContent = 'Insertar';
+
+        b.addEventListener('click', function () {
+          fetch('/tareas', {
+            method: 'POST',
+            body: JSON.stringify({ nombre: i1.value, descripcion: i2.value }),
+            headers: { 'Content-Type': 'application/json' }
+          }).then(res => res.json())
+            .then(data => console.log(data));
+        });
+        d.appendChild(b);
+
+        division.appendChild(d);
 
         fetch('/tareas')
           .then(function (response) {
             return response.json();
           })
-          .then(function (jsondata) {                         
-            jsondata.map(id => {
-              p = document.createElement('p');
-              p.setAttribute('id', id._id)
-              p.setAttribute('class', 'list-group-item');
-              p.textContent = id._id + ' '  + id.descripcion;
-              p.style.display = "block";
-
-              let b=crear('button', 'u-'+id._id, 'btn btn-info', 'margin-left: 20px');
-              b.textContent = 'Editar';
-              p.appendChild(b);
- 
-              b=crear('button', 'u-'+id._id, 'btn btn-danger', 'margin-left: 20px');
-              b.textContent = 'Borrar';
-              // b.setAttribute('onclick', 'toastr.error("Vas a eliminar un elemento")');
-              b.addEventListener ('click', function () {  
-                fetch('/tareas/'+ id._id, { method: 'DELETE' })
-                  .then ( res => res.json())
-                  .then ( data => console.log(data) );
-              });
-
-              p.appendChild(b);
-
-              division.appendChild(p);
+          .then(function (jsondata) {
+            jsondata.map(item => {
+              d = crearItem(item);
+              division.appendChild(d);
             });
           });
 
       }
+
+       function crearNodo (tag, id, clase, estilo) {
+        let el = document.createElement(tag);
+
+        el.setAttribute('id', id);
+        el.setAttribute('class', clase);
+        el.setAttribute('style', estilo);
+
+        return el;
+      }
+
+      function crearItem(item) {
+        let d, i1, i2, b;
+
+        d = document.createElement('div');
+        d.setAttribute('class', 'item');
+
+        i1 = document.createElement('input');
+        i1.setAttribute('type', 'text');
+        i1.setAttribute('value', item.nombre);
+        d.appendChild(i1);
+
+        i2 = document.createElement('input');
+        i2.setAttribute('type', 'text');
+        i2.setAttribute('value', item.descripcion);
+        d.appendChild(i2);
+
+        b = crearNodo('button', '', '', 'margin-left: 20px');
+        b.textContent = 'Modificar';
+
+        b.addEventListener('click', function () {
+          console.log(i1.name.toString(), i1.value);
+          console.log(i2.name.toString(), i2.value);
+
+          fetch('/tareas/' + item._id, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nombre: i1.value, descripcion: i2.value })
+          }).then(res => res.json())
+            .then(data => { console.log(data) });
+        });
+        d.appendChild(b);
+
+
+        b = crearNodo('button', '', '', 'margin-left: 20px');
+        b.textContent = 'Borrar';
+        // b.setAttribute('onclick', 'toastr.error("Vas a eliminar un elemento")');
+        b.addEventListener('click', function () {
+          if (confirm("La tarea " + item.nombre + " va a ser eliminada. ¿Está seguro?")) {
+            fetch('/tareas/' + item._id, { method: 'DELETE' })
+              .then(res => res.json())
+              .then(data => console.log(data));
+          }
+        });
+        d.appendChild(b);
+
+        return d;
+      }
+
     </script>
 
 </body>

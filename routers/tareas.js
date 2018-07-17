@@ -4,7 +4,7 @@ const Tarea   = require('../models/Tarea');
 const router  = express.Router();
 
 
-// index. ver todas las tareas
+// ver todas las tareas
 router.get('/', function(req, res) {
   Tarea.find( {}, (err, data) => {
     if (err) res.json ({error: err});
@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
 });
   
 
-// eliminar tarea
+// eliminar una tarea
 router.delete('/:id', (req, res) => {
     Tarea.findOneAndRemove( {_id: req.params.id }, (err, data) => {
         if (err) res.json ({error: err});
@@ -30,7 +30,7 @@ router.delete('/:id', (req, res) => {
 });
 
 
-// insertar tarea
+// insertar una tarea
 router.post('/',  (req, res) => {
     const tarea = new Tarea({ nombre: req.body.nombre, descripcion: req.body.descripcion });
     tarea.save( (err, data) => {
@@ -40,6 +40,7 @@ router.post('/',  (req, res) => {
 });
 
 
+// actualizar una tarea
 router.put('/:id',  (req, res) => {
     //const tarea = new Tarea({ nombre: req.body.nombre, descripcion: req.body.descripcion });
     Tarea.findOneAndUpdate( {_id: req.params.id }, {$set: {nombre: req.body.nombre, descripcion: req.body.descripcion} }, (err, data) => {
