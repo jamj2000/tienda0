@@ -6,11 +6,25 @@
 
 Este proyecto **NO** necesita de frameworks como Angular, React o Vue para la vista. Ésta se realiza con VanillaJS.
 
-El código fuente editado son únicamente 3 archivos:
+Los archivos de código fuente son:
 
-- index.js (para el servidor de backend)
-- public/index.html (la página que se envía al cliente)
-- public/app.js (la vista de la aplicación)
-
-
+```
+index.js
+config.js
+public
+├── app.html
+├── css
+│   ├── bootstrap.min.css
+│   └── toastr.css
+├── index.html
+└── js
+    ├── bootstrap.min.js
+    ├── jquery-1.9.1.min.js
+    ├── jquery-migrate-1.2.1.min.js
+    └── toastr.js
+routers/
+└── tareas.js
+models
+└── Tarea.js
+```
 
