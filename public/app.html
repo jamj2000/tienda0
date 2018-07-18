@@ -133,7 +133,7 @@
 
   <footer> Página simple, sin bootstrap </footer>
 
-
+  <script src="/socket.io/socket.io.js"></script>
   <script>
     window.addEventListener('load', function () {
       [].forEach.call(document.getElementsByClassName('seccion'), function (el) {
@@ -155,15 +155,21 @@
           verSeccion(el.name);
           this.setAttribute('style', 'background-color: #bbb; color: #000');
         });
-
       });
     }
 
     function refrescarMenu() {
-      [].forEach.call(document.getElementsByClassName("opcion"), function (el) {
+      // [].forEach.call(document.getElementsByClassName("opcion"), function (el) {
+      //   el.setAttribute('style', 'background-color: rgba(0, 0, 0, 0); color: #fff');
+      // });
+        // [].forEach.call(document.getElementsByClassName("seccion"), function (el) {
+      //   el.setAttribute('style', 'display: none');
+      // });
+
+      Array.from(document.getElementsByClassName("opcion"), function (el) {
         el.setAttribute('style', 'background-color: rgba(0, 0, 0, 0); color: #fff');
       });
-      [].forEach.call(document.getElementsByClassName("seccion"), function (el) {
+      Array.from(document.getElementsByClassName("seccion")).map(function (el) {
         el.setAttribute('style', 'display: none');
       });
 
