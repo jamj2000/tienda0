@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inicio</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Tienda</title>
 
   <!-- Versiones posteriores de JQuery pueden hacer fallar Toastr 
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -19,8 +20,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   Comentado para eliminar aviso de scripts de sitio no seguro. Usamos archivos locales -->
 
-
-
   <link rel="stylesheet" href="css/toastr.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
@@ -30,7 +29,7 @@
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/">Tienda</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -38,13 +37,19 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Inicio
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="/">Acerca
             <span class="sr-only">(current)</span>
           </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="/app0.html">App0</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/tareas">Tareas</a>
+            <a class="nav-link" href="/app1.html">App1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/app2.html">App2</a>
         </li>
       </ul>
 
@@ -55,28 +60,41 @@
 
   <main class="jumbotron">
 
-    <h1>Página de inicio de proyecto</h1>
-    <p>Este proyecto está en una fase inicial. A continuación hay algunos enlaces funcionales, a modo de pruebas.</p>
-    <a class="btn btn-info" onclick="toastr.info('Hi! I am info message.');">Info message</a>
-    <a class="btn btn-warning" onclick="toastr.warning('Hi! I am warning message.');">Warning message</a>
-    <a class="btn btn-success" onclick="toastr.success('Hi! I am success message.');">Success message</a>
-    <a class="btn btn-danger" onclick="toastr.error('Hi! I am error message.');">Error message</a>
-    
-    <br /><br /><br /><br />
+    <h1>Proyecto FullStack (MEN - MongoDB, Express, Node) </h1>
+    <h6><b>Creado con fines educativos</b></h6>
+    <h6><b>No se utiliza ningún framework para el FrondEnd</b>, ni Angular, ni React, ni Vue, ni ningún otro. Sólo VanillaJS. </h6>
+    <h6>Existen 3 aplicaciones de tipo SPA (Single Page Application). De menor a mayor dificultad son las siguientes:</h6>
+
+    <br>
     <div class="container row">
-       <p class=" col-sm-4"></p>
-       <p class=" col-sm-4"></p>
-       <a class="btn btn-info col-sm-4" href="/app.html">Applicación web</a>
+       <p class=" col-lg-6"></p>
+       <a class="btn btn-info col-lg-6" href="/app0.html">Applicación sin bootstrap. Artículos.</a>
     </div>
+    <br>
+    <div class="container row">
+        <p class=" col-lg-6"></p>
+        <a class="btn btn-info col-lg-6" href="/app1.html">Applicación sin bootstrap. Artículos y Clientes.</a>
+     </div>
+     <br>
+     <div class="container row">
+        <p class=" col-lg-6"></p>
+        <a class="btn btn-info col-lg-6" href="/app2.html">Applicación con bootstrap. Artículos y Clientes.</a>
+     </div>
+  
+     <br><br>
+     <p>A continuación hay algunos enlaces para probar los mensajes de TOASTR.</p>
+     <a class="btn btn-info" onclick="toastr.info('Esto es un mensaje de información.');">Mensaje de Información</a>
+     <a class="btn btn-warning" onclick="toastr.warning('Esto es un mensaje de aviso.');">Mensaje de Aviso</a>
+     <a class="btn btn-success" onclick="toastr.success('Esto es un mensaje de éxito.');">Mensaje de Éxito</a>
+     <a class="btn btn-danger" onclick="toastr.error('Esto es un mensaje de error.');">Mensaje de Error</a>
+     
   </main>
 
-  <footer class="footer">
-     <span class="text-muted">JAMJ 2018</span>
+  <footer class="footer fixed-bottom">
+     <span class="float-right text-muted">JAMJ 2018</span>
   </footer>
 
 
-
-  <!-- <script src="/socket.io/socket.io.js"></script> -->
   <script src="js/jquery-1.9.1.min.js"></script>
   <script src="js/jquery-migrate-1.2.1.min.js"></script>
   <script src="js/toastr.js"></script>

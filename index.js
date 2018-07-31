@@ -1,8 +1,8 @@
+const path     = require('path');
 const express  = require('express');
 const mongoose = require('mongoose');
-const path     = require('path');
 const socketio = require('socket.io');
-const tareas   = require('./routers/tareas');
+const routes   = require('./routes');
 const config   = require('./config');
 
 const app      = express();
@@ -16,8 +16,11 @@ mongoose.connect(config.db_uri, { useNewUrlParser: true })
 // Middleware
 app.use(express.json());
 
-// Rutas
-app.use ('/tareas', tareas);
+// // Rutas
+// // app.use ('/clientes',  routes);
+// // app.use ('/articulos', routes);
+
+app.use ('/',  routes);
 
 // Archivos estáticos
 app.use(express.static(path.join(__dirname , 'public')));
@@ -28,14 +31,20 @@ const server = app.listen (config.port, () => console.log(`Servidor iniciado en 
 // Conexión en tiempo real con Websockets (módulo socket.io)
 const io     = socketio.listen (server);
 
-io.on('connection', (socket) => { 
-    console.log (`- Nueva conexión en tiempo real ${socket.id}`) 
+
+// io.on('connection', (socket) => { 
+//     console.log (`- Nueva conexión en tiempo real ${socket.id}`) 
     
-    socket.emit ('saludo', { mensaje: 'Hola desde el servidor'} );
+//     // socket.emit ('saludo', { mensaje: 'Hola desde el servidor'} );
     
-    socket.on ('cambio en BD', (data) => { 
-      console.log(data) 
-      //io.sockets.emit(data);
-    });
+//     socket.on ('saludo', (data) => { 
+//       console.log(data) 
+//       //io.sockets.emit(data);
+//     });
+
+//     socket.on ('cambio en BD', (data) => { 
+//       console.log(data) 
+//       //io.sockets.emit(data);
+//     });
    
-});
+// });

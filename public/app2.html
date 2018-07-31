@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <title>Tienda (App2)</title>
+
+
+  <link rel="stylesheet" href="css/toastr.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/" name="inicio">INICIO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="/">Acerca
+            <span class="sr-only">(current)</span>
+          </a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link opcion" name="articulos">Artículos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link opcion" name="clientes" >Clientes</a>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <main class="container" id="contenido">
+      <div class="seccion" id="articulos" ></div>
+      <div class="seccion" id="clientes"  ></div>
+      <div class="seccion" id="acerca"    ></div>
+  </main>
+
+  <footer class="footer fixed-bottom">
+     <span class="float-right text-muted">Aplicación con bootstrap. Artículos y Clientes.</span>
+  </footer>
+
+
+  <script>
+    let index = ""
+      + '<div>'
+      + '<h1>App2</h1>'
+      + '<br><br><p>Esta SPA ofrece 3 opciones:</p>'
+      + '<br>'
+      + '<ul style="padding-left: 50px">'
+      + '<li><b>INICIO</b>: Enlace para salir de la APP y volver a la página de inicio.</li>'
+      + '<li><b>Artículos</b>: Permite realizar operaciones CRUD sobre los artículos de la BD. </li>'
+      + '<li><b>Clientes</b>: Permite realizar operaciones CRUD sobre los artículos de la BD.</li>'
+      + '</ul>'
+      + '<br><p>Por favor, escoge una opción.'
+      + '</div>';
+
+
+    window.addEventListener('load', function () {
+      //Array.from == [].forEach.call
+      Array.from(document.getElementsByClassName('seccion'), function (el) {
+        el.setAttribute('style', 'display: none')
+      });
+      resetMenu();
+      refrescarContenido('acerca');
+    });
+
+    // document.addEventListener('keypress', function (e) {
+    //   if (e.keyCode === 13) document.getElementById('insertar').click();
+    // });
+
+    function resetMenu() {
+      Array.from(document.getElementsByClassName("opcion"), function (i) {
+
+        i.addEventListener('click', function (event) {
+          if (this.name != 'inicio')
+            event.preventDefault();
+          refrescarMenu();
+          refrescarContenido(i.name);
+          // this.setAttribute('style', 'background-color: #bbb; color: #000');
+        });
+      });
+    }
+
+    function refrescarMenu() {
+      Array.from(document.getElementsByClassName("opcion"), function (i) {
+        // i.setAttribute('style', 'background-color: rgba(0, 0, 0, 0); color: #fff');
+      });
+      Array.from(document.getElementsByClassName("seccion")).map(function (i) {
+        i.setAttribute('style', 'display: none');
+      });
+    }
+
+
+    function borrar(coleccion, documento) {
+      // if (confirm("El documento para " + documento.nombre + " va a ser eliminado. ¿Está seguro?")) {
+      fetch('/' + coleccion + '/' + documento._id, { method: 'DELETE' })
+        .then(res => res.json())
+        .then(data => console.log(data));
+      // }
+    }
+
+    function insertar(coleccion, campo1, campo2) {
+      let objeto = {};
+      objeto['nombre'] = campo1;
+      switch (coleccion) {
+        case 'clientes': objeto['apellidos'] = campo2; break;
+        case 'articulos': objeto['precio'] = campo2; break;
+        default:
+      }
+
+      fetch('/' + coleccion, {
+        method: 'POST',
+        body: JSON.stringify(objeto),
+        headers: { 'Content-Type': 'application/json' }
+      }).then(res => res.json())
+        .then(data => { console.log(data); refrescarContenido(coleccion) });
+    }
+
+    function modificar(coleccion, documento, campo1, campo2) {
+      let objeto = {};
+      objeto['nombre'] = campo1;
+      switch (coleccion) {
+        case 'clientes': objeto['apellidos'] = campo2; break;
+        case 'articulos': objeto['precio'] = campo2; break;
+        default:
+      }
+      fetch('/' + coleccion + '/' + documento._id, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(objeto)
+      }).then(res => res.json())
+        .then(data => { console.log(data) });
+    }
+
+
+    function crearNodo(tag, id, clase, estilo) {
+      let el = document.createElement(tag);
+
+      el.setAttribute('id', id);
+      el.setAttribute('class', clase);
+      el.setAttribute('style', estilo);
+
+      return el;
+    }
+
+
+    function crearItem(seccion, item) {
+      let d, i1, i2, b;
+
+      d = document.createElement('div');
+      d.setAttribute('class', 'form-inline mb-2 row');
+
+      i1 = document.createElement('input');
+      i1.setAttribute('type', 'text');
+      i1.setAttribute('value', Object.values(item)[1]);
+      i1.setAttribute('class', 'form-control');
+      d.appendChild(i1);
+
+      i2 = document.createElement('input');
+      i2.setAttribute('type', 'text');
+      i2.setAttribute('value', Object.values(item)[2]);
+      i2.setAttribute('class', 'form-control');
+      d.appendChild(i2);
+
+
+      // MODIFICAR
+      b = crearNodo('button', '', '', '');
+      b.textContent = 'Modificar';
+      b.setAttribute('class', 'btn btn-info ml-2');
+      b.addEventListener('click', function () { modificar(seccion, item, i1.value, i2.value) });
+      d.appendChild(b);
+
+      // BORRAR
+      b = crearNodo('button', '', '', '');
+      b.textContent = 'Borrar';
+      b.setAttribute('class', 'btn btn-danger ml-2');
+      b.addEventListener('click', function () { borrar(seccion, item); this.parentNode.remove(); });
+      d.appendChild(b);
+
+      return d;
+    }
+
+
+    function limpiarDocumentos(seccion) {
+      let division;
+
+      // Eliminamos sección y volvemos a crearla sin datos
+      document.getElementById(seccion).remove();
+      division = crearNodo('div', seccion, 'seccion', 'display: block');
+      document.getElementById('contenido').appendChild(division);
+    }
+
+
+
+    function insertarDocumento(seccion) {
+      let d, i1, i2;
+
+      d = document.createElement('div');
+      d.setAttribute('class', 'form-inline mb-2 row');
+
+      i1 = document.createElement('input');
+      i1.setAttribute('type', 'text');
+      i1.setAttribute('readonly', 'true');
+      i1.setAttribute('style', 'background-color: #bbb');
+      i1.setAttribute('value', 'Nombre');
+      i1.setAttribute('class', 'form-control');
+      d.appendChild(i1);
+
+      i2 = document.createElement('input');
+      i2.setAttribute('type', 'text');
+      i2.setAttribute('readonly', 'true');
+      i2.setAttribute('style', 'background-color: #bbb');
+      i2.setAttribute('value', (seccion == 'articulos') ? 'Precio' : 'Apellidos');
+      i2.setAttribute('class', 'form-control');
+      d.appendChild(i2);
+
+      document.getElementById(seccion).appendChild(d);
+
+      d = document.createElement('div');
+      d.setAttribute('class', 'form-inline mb-2 row');
+
+      i1 = document.createElement('input');
+      i1.setAttribute('type', 'text');
+      i1.setAttribute('class', 'form-control');
+      d.appendChild(i1);
+
+      i2 = document.createElement('input');
+      i2.setAttribute('type', 'text');
+      i2.setAttribute('class', 'form-control');
+      d.appendChild(i2);
+
+      b = crearNodo('button', 'insertar', '', '');
+      b.textContent = 'Insertar';
+      b.setAttribute('class', 'btn btn-success  ml-2');
+      b.addEventListener('click', function () { insertar(seccion, i1.value, i2.value) });
+      d.appendChild(b);
+
+      document.getElementById(seccion).appendChild(d);
+    }
+
+
+    function verDocumentos(seccion) {
+      let i;
+      fetch('/' + seccion)
+        .then(function (response) { return response.json() })
+        .then(function (jsondata) {
+          jsondata.map(function (item) {
+            i = crearItem(seccion, item);
+            document.getElementById(seccion).appendChild(i);
+          });
+        });
+    }
+
+
+    function refrescarContenido(seccion) {
+      switch (seccion) {
+        case 'articulos':
+          limpiarDocumentos('articulos');
+          insertarDocumento('articulos');
+          verDocumentos('articulos');
+          break;
+        case 'clientes':
+          limpiarDocumentos('clientes');
+          insertarDocumento('clientes');
+          verDocumentos('clientes');
+          break;
+        case 'acerca':  
+          let acerca = document.getElementById('acerca')
+          acerca.innerHTML = index;
+          acerca.setAttribute('style', 'display: block');
+          break;
+        default:
+      }
+    }
+
+  </script>
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/jquery-migrate-1.2.1.min.js"></script>
+  <script src="js/toastr.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

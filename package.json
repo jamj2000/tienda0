@@ -1,14 +1,14 @@
 {
-  "name": "tareas",
+  "name": "tienda",
   "version": "1.0.0",
-  "description": "Aplicación para gestionar tareas",
+  "description": "Aplicación para una tienda",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "node",
-    "tareas",
     "javascript"
   ],
   "author": "José Antonio Muñoz Jiménez",
