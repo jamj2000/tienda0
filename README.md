@@ -16,10 +16,10 @@ Se utilizan los mínimos recursos (ya sean estos paquetes, librerías o framewor
 Existen 3 aplicaciones web dentro de proyecto, denominadas App0, App1 y App2. Cada una de ellas es una SPA (Single Page Application).
 
 ![Index](snapshot/tienda0-index.png)
-![App1 - Artículos](snapshot/tienda0-app1-articulos.png)
-![App1 - Clientes](snapshot/tienda0-app1-clientes.png)
-![App2 - Artículos](snapshot/tienda0-app2-articulos.png)
-![App2 - Clientes](snapshot/tienda0-app2-clientes.png)
+![App1 - Artículos](./snapshot/tienda0-app1-articulos.png)
+![App1 - Clientes](./snapshot/tienda0-app1-clientes.png)
+![App2 - Artículos](./snapshot/tienda0-app2-articulos.png)
+![App2 - Clientes](./snapshot/tienda0-app2-clientes.png)
 
 
 Los archivos utilizados son los siguientes:
