@@ -1,4 +1,4 @@
-# Tienda0
+# tienda0
 # Proyecto Fullstack con NODEJS + EXPRESS + MONGODB
 
 [![VanillaJS](https://img.shields.io/badge/Vanilla-JS-orange.svg)](http://vanilla-js.com/)
