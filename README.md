@@ -2,7 +2,7 @@
 
 ## Tareas1
 
-**Proyecto fullstack condenadamente simple, para fines didácticos**. 
+**Proyecto fullstack simplificado**. 
 
 En proceso. 
 
