@@ -3,7 +3,6 @@ const {Cliente, Articulo}   = require('./models');
 
 const router  = express.Router();
 
-const socketio = require('socket.io');
 
 //============================
 // CLIENTES

@@ -1,7 +1,6 @@
 const path     = require('path');
 const express  = require('express');
 const mongoose = require('mongoose');
-const socketio = require('socket.io');
 const routes   = require('./routes');
 const config   = require('./config');
 
@@ -29,7 +28,7 @@ app.use(express.static(path.join(__dirname , 'public')));
 const server = app.listen (config.port, () => console.log(`Servidor iniciado en puerto ${config.port}`));
 
 // Conexión en tiempo real con Websockets (módulo socket.io)
-const io     = socketio.listen (server);
+// const io     = socketio.listen (server);
 
 
 // io.on('connection', (socket) => { 
