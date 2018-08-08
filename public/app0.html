@@ -35,11 +35,12 @@
       background-color: var(--bgcolor-menu);
       width: 100%;
       position: fixed;
-      z-index: 100;
+      z-index: 1;
     }
 
     main {
       padding-left: 40px;
+      z-index: 0;
     }
 
 
@@ -108,7 +109,7 @@
 
     footer {
       color: #ffffff;
-      position: absolute;
+      position: fixed;
       left: 0;
       bottom: 0;
       height: 30px;
@@ -139,7 +140,7 @@
     <div class="seccion" id="acerca"    style="min-height:200px"></div>
   </main>
 
-  <footer>Aplicación sin bootstrap. Artículos.</footer>
+  <footer>App sin bootstrap. Artículos.</footer>
 
 
   <script>

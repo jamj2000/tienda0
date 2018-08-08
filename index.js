@@ -6,45 +6,18 @@ const config   = require('./config');
 
 const app      = express();
 
-
 mongoose.connect(config.db_uri, { useNewUrlParser: true })
   .then(db   => console.log ('Conexión correcta a la BD'))
   .catch(err => console.log ('Error en la conexión a la BD'));
 
-  
-// Middleware
-app.use(express.json());
-
-// // Rutas
-// // app.use ('/clientes',  routes);
-// // app.use ('/articulos', routes);
-
-app.use ('/',  routes);
-
 // Archivos estáticos
 app.use(express.static(path.join(__dirname , 'public')));
 
+// Middleware
+app.use(express.json());
+
+// Rutas
+app.use ('/',  routes);
+
 // Servidor
-const server = app.listen (config.port, () => console.log(`Servidor iniciado en puerto ${config.port}`));
-
-
-// Conexión en tiempo real con Websockets (módulo socket.io)
-// const io     = socketio.listen (server);
-
-
-// io.on('connection', (socket) => { 
-//     console.log (`- Nueva conexión en tiempo real ${socket.id}`) 
-    
-//     // socket.emit ('saludo', { mensaje: 'Hola desde el servidor'} );
-    
-//     socket.on ('saludo', (data) => { 
-//       console.log(data) 
-//       //io.sockets.emit(data);
-//     });
-
-//     socket.on ('cambio en BD', (data) => { 
-//       console.log(data) 
-//       //io.sockets.emit(data);
-//     });
-   
-// });
+app.listen (config.port, () => console.log(`Servidor iniciado en puerto ${config.port}`));
