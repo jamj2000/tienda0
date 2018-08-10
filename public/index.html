@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="manifest" href="/manifest.json">
+
   <title>Tienda</title>
+
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <!-- PWA: Para habilitar Progressive Web Application -->
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- PWA: Añadir a pantalla de inicio para Safari en iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Tienda">
+  <link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+  <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
 
   <!-- Versiones posteriores de JQuery pueden hacer fallar Toastr 
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -38,19 +50,19 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item active">
+        <li class="nav-item active">
           <a class="nav-link" href="/">Acerca
             <span class="sr-only">(current)</span>
           </a>
-        </li> -->
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/app0.html">App0</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/app1.html">App1</a>
+          <a class="nav-link" href="/app1.html">App1</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/app2.html">App2</a>
+          <a class="nav-link" href="/app2.html">App2</a>
         </li>
       </ul>
 
@@ -62,37 +74,42 @@
   <main class="jumbotron">
 
     <h1>Proyecto FullStack (MEN - MongoDB, Express, Node) </h1>
-    <h6><b>Creado con fines educativos</b></h6>
-    <h6><b>No se utiliza ningún framework para el FrondEnd</b>, ni Angular, ni React, ni Vue, ni ningún otro. Sólo VanillaJS. </h6>
+    <h6>
+      <b>Creado con fines educativos</b>
+    </h6>
+    <h6>
+      <b>No se utiliza ningún framework para el FrondEnd</b>, ni Angular, ni React, ni Vue, ni ningún otro. Sólo VanillaJS.
+      </h6>
     <h6>Existen 3 aplicaciones de tipo SPA (Single Page Application). De menor a mayor dificultad son las siguientes:</h6>
 
     <br>
     <div class="container row">
-       <p class=" col-lg-6"></p>
-       <a class="btn btn-info col-lg-6" href="/app0.html">App sin bootstrap. Artículos.</a>
+      <p class=" col-lg-6"></p>
+      <a class="btn btn-info col-lg-6" href="/app0.html">App sin bootstrap. Artículos.</a>
     </div>
     <br>
     <div class="container row">
-        <p class=" col-lg-6"></p>
-        <a class="btn btn-info col-lg-6" href="/app1.html">App sin bootstrap. Artículos, Clientes.</a>
-     </div>
-     <br>
-     <div class="container row">
-        <p class=" col-lg-6"></p>
-        <a class="btn btn-info col-lg-6" href="/app2.html">App con bootstrap. Artículos, Clientes.</a>
-     </div>
-  
-     <br><br>
-     <p>A continuación hay algunos enlaces para probar los mensajes de TOASTR.</p>
-     <a class="btn btn-info" onclick="toastr.info('Esto es un mensaje de información.');">Mensaje de Información</a>
-     <a class="btn btn-warning" onclick="toastr.warning('Esto es un mensaje de aviso.');">Mensaje de Aviso</a>
-     <a class="btn btn-success" onclick="toastr.success('Esto es un mensaje de éxito.');">Mensaje de Éxito</a>
-     <a class="btn btn-danger" onclick="toastr.error('Esto es un mensaje de error.');">Mensaje de Error</a>
-     
+      <p class=" col-lg-6"></p>
+      <a class="btn btn-info col-lg-6" href="/app1.html">App sin bootstrap. Artículos, Clientes.</a>
+    </div>
+    <br>
+    <div class="container row">
+      <p class=" col-lg-6"></p>
+      <a class="btn btn-info col-lg-6" href="/app2.html">App con bootstrap. Artículos, Clientes.</a>
+    </div>
+
+    <br>
+    <br>
+    <p>A continuación hay algunos enlaces para probar los mensajes de TOASTR.</p>
+    <a class="btn btn-info" onclick="toastr.info('Esto es un mensaje de información.');">Mensaje de Información</a>
+    <a class="btn btn-warning" onclick="toastr.warning('Esto es un mensaje de aviso.');">Mensaje de Aviso</a>
+    <a class="btn btn-success" onclick="toastr.success('Esto es un mensaje de éxito.');">Mensaje de Éxito</a>
+    <a class="btn btn-danger" onclick="toastr.error('Esto es un mensaje de error.');">Mensaje de Error</a>
+
   </main>
 
   <footer class="footer fixed-bottom">
-     <span class="float-right text-muted">JAMJ 2018</span>
+    <span class="float-right text-muted">JAMJ 2018</span>
   </footer>
 
 
@@ -101,6 +118,22 @@
   <script src="js/toastr.js"></script>
   <script src="js/bootstrap.min.js"></script>
 
+
+
+  <script>
+// Si está soportado serviceWorker por el navegador
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('./service-worker.js')
+            .then(reg => console.log('[Service Worker] * Registrado.'))
+            .catch(err => console.log(`[Service Worker] * Error: ${err}`));
+    });
+}
+  </script>
+
+  // Gestión de eventos del ServiceWorker
+  <script src="service-worker.js"></script>
 </body>
 
 </html>
