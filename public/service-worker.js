@@ -20,7 +20,7 @@ const CACHE_ASSETS = [
   'js/toastr.js'
 ];
 
-// EventListener para evento 'install'.
+// INSTALL
 // Realizamos el cacheo de la APP SHELL
 self.addEventListener('install', function (e) {
   console.log("[Service Worker] * Instalado.");
@@ -41,7 +41,7 @@ self.addEventListener('install', function (e) {
 });
 
 
-// EventListener para evento 'activate'.
+// ACTIVATE
 // Eliminamos cachés antiguas.
 self.addEventListener('activate', function (e) {
   console.log("[Service Worker] * Activado.");
@@ -63,15 +63,19 @@ self.addEventListener('activate', function (e) {
 });
 
 
-// EventListener para evento 'fetch'.
-// ...
+// FETCH
+// Hacemos peticiones a recursos.
 self.addEventListener('fetch', function (e) {
   console.log("[Service Worker] * Fetch.");
-  e.respondWith( fetch(e.request).catch ( function () { return caches.match(e.request)}) );
+
+  // Hacemos petición a la red y si no está disponible obtenemos desde la caché
+  e.respondWith(fetch(e.request)
+    .catch(function () { return caches.match(e.request) }));
+
 });
 
 
-// EventListener para evento 'push'.
+// PUSH
 self.addEventListener('push', function (e) {
   // Mantener el service worker a la espera hasta que la notificación sea creada.
   e.waitUntil(
