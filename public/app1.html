@@ -217,7 +217,7 @@
 
     function borrar(coleccion, documento) {
       // if (confirm("El documento para " + documento.nombre + " va a ser eliminado. ¿Está seguro?")) {
-      fetch('/' + coleccion + '/' + documento._id, { method: 'DELETE' })
+      fetch('/api/' + coleccion + '/' + documento._id, { method: 'DELETE' })
         .then(res => res.json())
         .then(data => {
           info.innerHTML = "Registro eliminado correctamente.";
@@ -241,7 +241,7 @@
         default:
       }
 
-      fetch('/' + coleccion, {
+      fetch('/api/' + coleccion, {
         method: 'POST',
         body: JSON.stringify(objeto),
         headers: { 'Content-Type': 'application/json' }
@@ -268,7 +268,7 @@
         case 'articulos': objeto['precio'] = campo2; break;
         default:
       }
-      fetch('/' + coleccion + '/' + documento._id, {
+      fetch('/api/' + coleccion + '/' + documento._id, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(objeto)
@@ -372,7 +372,7 @@
 
     function verDocumentos(seccion) {
       let i;
-      fetch('/' + seccion)
+      fetch('/api/' + seccion)
         .then(function (response) { return response.json() })
         .then(function (jsondata) {
           jsondata.map(function (item) {

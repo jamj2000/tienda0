@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname , 'public')));
 app.use(express.json());
 
 // Rutas
-app.use ('/',  routes);
+app.use ('/api',  routes);
 
 // Servidor
 app.listen (config.port, () => console.log(`Servidor iniciado en puerto ${config.port}`));
