@@ -240,7 +240,11 @@
       d.appendChild(i1);
 
       i2 = document.createElement('input');
-      i2.setAttribute('type', 'text');
+      // i2.setAttribute('type', 'text');
+      i2.setAttribute('type', 'number');
+      i2.setAttribute('min', '0');
+      i2.setAttribute('max', '9999.99');
+      i2.setAttribute('step', '.01');
       i2.setAttribute('value', item.precio);
       d.appendChild(i2);
 
@@ -300,7 +304,11 @@
       d.appendChild(i1);
 
       i2 = document.createElement('input');
-      i2.setAttribute('type', 'text');
+      // i2.setAttribute('type', 'text');
+      i2.setAttribute('type', 'number');
+      i2.setAttribute('min', '0');
+      i2.setAttribute('max', '9999.99');
+      i2.setAttribute('step', '.01');
       d.appendChild(i2);
 
       b = crearNodo('button', 'insertar', '', '');
