@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="css/toastr.css" />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
 
+  <style>
+    input:required:invalid,
+    input:focus:invalid {
+      background-color: lightpink;
+    }
+  </style>
 
 </head>
 
@@ -35,7 +41,7 @@
           <a class="nav-link opcion" name="articulos">Artículos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link opcion" name="clientes" >Clientes</a>
+          <a class="nav-link opcion" name="clientes">Clientes</a>
         </li>
       </ul>
 
@@ -43,13 +49,13 @@
   </nav>
 
   <main class="container mb-5" id="contenido">
-      <div class="seccion" id="articulos" ></div>
-      <div class="seccion" id="clientes"  ></div>
-      <div class="seccion" id="acerca"    ></div>
+    <div class="seccion" id="articulos"></div>
+    <div class="seccion" id="clientes"></div>
+    <div class="seccion" id="acerca"></div>
   </main>
 
   <footer class="footer fixed-bottom bg-light">
-     <span class="float-right text-muted">App con bootstrap. Artículos y Clientes.</span>
+    <span class="float-right text-muted">App con bootstrap. Artículos y Clientes.</span>
   </footer>
 
 
@@ -171,7 +177,7 @@
 
       i2 = document.createElement('input');
       // i2.setAttribute('type', 'text');
-      i2.setAttribute('type',  (seccion == 'articulos') ? 'number' : 'text');
+      i2.setAttribute('type', (seccion == 'articulos') ? 'number' : 'text');
       i2.setAttribute('min', '0');
       i2.setAttribute('max', '9999.99');
       i2.setAttribute('step', '.01');
@@ -243,7 +249,7 @@
 
       i2 = document.createElement('input');
       // i2.setAttribute('type', 'text');
-      i2.setAttribute('type',  (seccion == 'articulos') ? 'number' : 'text');
+      i2.setAttribute('type', (seccion == 'articulos') ? 'number' : 'text');
       i2.setAttribute('min', '0');
       i2.setAttribute('max', '9999.99');
       i2.setAttribute('step', '.01');
@@ -285,7 +291,7 @@
           insertarDocumento('clientes');
           verDocumentos('clientes');
           break;
-        case 'acerca':  
+        case 'acerca':
           let acerca = document.getElementById('acerca')
           acerca.innerHTML = index;
           acerca.setAttribute('style', 'display: block');
