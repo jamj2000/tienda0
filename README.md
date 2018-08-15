@@ -115,7 +115,7 @@ Para ello, sigue los siguientes pasos:
 
   ```bash
   sudo apt install docker.io
-  sudo adduser <nombre_usuario>  docker
+  sudo adduser `id -un`  docker
   ```
   Cerrar sesión y volver a iniciar sesión
 
