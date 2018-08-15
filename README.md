@@ -98,3 +98,33 @@ Para poder ejecutar este proyecto en tu equipo local, sigue los siguientes pasos
   ```
 5. Abre en el navegador web la URL `http://localhost:3000`.
   
+
+## Despliegue en Docker
+
+Si deseas mantener limpio tu equipo y no tener que instalar Nodejs ni MongoDB, entonces puedes utilizar Docker.
+
+Para ello, sigue los siguientes pasos:
+
+1. Clona este repositorio en tu equipo:
+  ```bash
+  git  clone  https://github.com/jamj2000/tienda0.git
+  cd   tienda0
+  ```
+  
+2. Instala el software para Docker. En Ubuntu:
+
+  ```bash
+  sudo apt install docker.io
+  sudo adduser <nombre_usuario>  docker
+  ```
+  Cerrar sesión y volver a iniciar sesión
+
+3. Dentro de la carpeta que contiene el código, ejecuta: 
+
+  ```bash
+  docker-compose  up  -d
+  ```
+
+> NOTA: Los puertos 80 y 27017 no deben estar ocupados por ningún servicio previo. Son necesarios para los servicios de Node y Mongo que lanzará Docker.
+
+
