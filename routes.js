@@ -17,7 +17,7 @@ router.get('/clientes', function (req, res) {
 });
 
 
-// ver un Cliente 
+// ver un Cliente
 router.get('/clientes/:id', (req, res) => {
     Cliente.findOne({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
@@ -67,7 +67,7 @@ router.get('/articulos', function (req, res) {
 });
 
 
-// ver un articulo 
+// ver un articulo
 router.get('/articulos/:id', (req, res) => {
     Articulo.findOne({ _id: req.params.id }, (err, data) => {
         if (err) res.json({ error: err });
@@ -102,7 +102,6 @@ router.post('/articulos', (req, res) => {
         else     res.json(data);
     });
 });
-
 
 
 
