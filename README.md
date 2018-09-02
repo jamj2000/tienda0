@@ -137,7 +137,7 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
 1. Create una cuenta en Heroku. Éste tiene varios [planes](https://www.heroku.com/pricing). Registrate en el plan Free, que aunque está algo limitado es gratis.
 
 
-2. Instala la herramienta `heroku-cli`. En [este enlace](https://devcenter.heroku.com/articles/heroku-cli) tienes la información.
+2. Instala la herramienta `heroku-cli`. En [este enlace](https://devcenter.heroku.com/articles/heroku-cli) tienes la información necesaria.
 
 3. Clona este repositorio en tu equipo:
   ```bash
@@ -167,7 +167,7 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
   Puedes verla abriendo dicha url en el navegador o ejecutando
   
   ```bash
-  heroku  push  heroku  master
+  heroku  open
   ```
   
 6. ¿Y los datos?
