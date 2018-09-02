@@ -130,7 +130,7 @@ Para ello, sigue los siguientes pasos:
 
 ## Despliegue en Heroku + mLab
 
-Actualmente la aplicación está desplegada en [HEROKU](https://www.heroku.com). Como base de datos utiliza DBaaS MySQL proporcionado por [MLAB](https://mlab.com).
+Actualmente la aplicación está desplegada en [HEROKU](https://www.heroku.com). Como base de datos utiliza DBaaS MongoDB proporcionado por [MLAB](https://mlab.com).
 
 Si deseas hacer un despligue usando los servicios proporcionados por los sitios anteriores, sigue estos pasos: 
 
