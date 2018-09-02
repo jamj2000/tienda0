@@ -179,7 +179,7 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
 
 8. Crea una base de datos MongoDB y apunta los parámetros de configuración.
   
-  En concreto deberás 5 datos:
+  En concreto deberás anotar 5 datos:
   - El nombre o IP de host donde se aloja la base de datos.
   - El puerto.
   - El nombre de la base de datos.
