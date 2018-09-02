@@ -128,7 +128,7 @@ Para ello, sigue los siguientes pasos:
 > NOTA: Los puertos 80 y 27017 no deben estar ocupados por ningún servicio previo. Son necesarios para los servicios de Node y Mongo que lanzará Docker.
 
 
-## Despliegue en Internet
+## Despliegue en Heroku + mLab
 
 Actualmente la aplicación está desplegada en [HEROKU](https://www.heroku.com). Como base de datos utiliza DBaaS MySQL proporcionado por [MLAB](https://mlab.com).
 
