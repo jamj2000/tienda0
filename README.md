@@ -134,7 +134,7 @@ Actualmente la aplicación está desplegada en [HEROKU](https://www.heroku.com).
 
 Si deseas hacer un despligue usando los servicios proporcionados por los sitios anteriores, sigue estos pasos: 
 
-1. Create una cuenta en Heroku. Éste tiene varios [planes](https://www.heroku.com/pricing). Registrate en el plan Free, que aunque está algo limitado es gratis.
+1. Create una cuenta en Heroku. Éste tiene varios [planes](https://www.heroku.com/pricing). Registrate en el plan Free, que aunque está algo limitado es gratis. Aún así se te solicitará un número de tarjeta. Tenlo en cuenta.
 
 
 2. Instala la herramienta `heroku-cli`. En [este enlace](https://devcenter.heroku.com/articles/heroku-cli) tienes la información necesaria.
