@@ -108,20 +108,20 @@ Para poder ejecutar este proyecto en tu equipo local, sigue los siguientes pasos
 Si deseas mantener limpio tu equipo y no tener que instalar Nodejs ni MongoDB, entonces puedes utilizar Docker.
 
 Para ello, sigue los siguientes pasos:
-
-1. Clona este repositorio en tu equipo:
-  ```bash
-  git  clone  https://github.com/jamj2000/tienda0.git
-  cd   tienda0
-  ```
   
-2. Instala el software para Docker. En Ubuntu:
+1. Instala el software para Docker. En Ubuntu:
 
   ```bash
   sudo  apt  install  docker.io  docker-compose
   sudo  adduser  `id -un`  docker
   ```
-  Cerrar sesión y volver a iniciar sesión
+  Cierra sesión y vuelve a iniciarla para cargar la nueva configuración de usuario ya añadido al grupo docker.
+
+
+2. Clona este repositorio en tu equipo:
+  ```bash
+  git  clone  https://github.com/jamj2000/tienda0.git  &&   cd   tienda0
+  ```
 
 3. Dentro de la carpeta que contiene el código, ejecuta: 
 
@@ -129,7 +129,7 @@ Para ello, sigue los siguientes pasos:
   docker-compose  up  -d
   ```
 
-> NOTA: Los puertos 80 y 27017 no deben estar ocupados por ningún servicio previo. Son necesarios para los servicios de Node y Mongo que lanzará Docker.
+> **NOTA:** Los puertos 80 y 27017 no deben estar ocupados por ningún servicio previo. Son necesarios para los servicios de Node y Mongo que lanzará Docker.
 
 
 ## Despliegue en Heroku + mLab
