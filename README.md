@@ -1,6 +1,8 @@
 # tienda0
 # Proyecto Fullstack con NODEJS + EXPRESS + MONGODB
 
+[![Build Status](https://travis-ci.org/jamj2000/tienda0.svg?branch=master)](https://travis-ci.org/jamj2000/tienda0)
+
 [![VanillaJS](https://img.shields.io/badge/Vanilla-JS-orange.svg)](http://vanilla-js.com/)
 
 ![NodeJS](https://img.shields.io/badge/NodeJS-8.11.3-blue.svg)
