@@ -182,7 +182,7 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
 
   Pulsa en el apartado **Deploy**. Luego en **Deployment method**, selecciona **GitHub** en lugar de Heroku Git. En el siguiente apartado deberás indicar el repositorio de GitHub donde tienes el código de la aplicación.  
 
-  ![Despliegue en Heroku de repositorio GitHub](deploy-heroku.png)
+  ![Despliegue en Heroku de repositorio GitHub](deploy-github.png)
 
   A continuación podemos optar por dos tipos de despliegue:
 
@@ -193,7 +193,7 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
 
   El despliegue automático es menos fiable que el despliegue manual, puesto que podemos realizar un despliegue de código no funcional. Para solucionar esto, marcaremos la casilla **Wait for CI to pass before deploy**. 
 
-  ![Despliegue automático en Heroku de repositorio GitHub si la integración continua (CI) fue bien](deploy-heroku-automatic.png)
+  ![Despliegue automático en Heroku de repositorio GitHub si la integración continua (CI) fue bien](deploy-github-automatic.png)
 
   >**NOTA:** Marcar la casilla anterior sólo tiene sentido si utilizas un sistema de integración continua como [Travis CI](https://travis-ci.org). Puedes darte de alta en él con tu identidad de GitHub.
   >
