@@ -207,10 +207,10 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
   >
   > Una vez iniciada sesión en TravisCI, deberás añadir el repositorio de GitHub con el código de tu aplicación. Cada vez que realices un *push* al repositorio en GitHub, TravisCI procederá a realizar la construcción (build). El resultado de la operación se indica mediante una insignia o *badge*, en color verde si todo fue correcto y en color rojo si la construcción dio errores.
   >
+  > Ahora podrás realizar un *push* o modificar algún archivo del repositorio GitHub y verás a TravisCI en acción. 
+  >  
   >![Travis badge](snapshots/badge-travis.png)
   >
-  > Ahora podrás realizar un *push* o modificación a algún archivo del repositorio GitHub y verás a TravisCI en acción. 
-  > 
   > Si has realizado todos los pasos anteriores correctamente verás que en tu repositorio GitHub te aparece un nuevo apartado de **environment**.
   >
   >![GitHub environment](snapshots/github-environment.png)
