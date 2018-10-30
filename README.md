@@ -174,6 +174,42 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
   heroku  open
   ```
   
+  **DESPLIEGUE ALTERNATIVO**
+
+  Podemos hacer uso de nuestro repositorio de GitHub en lugar de utilizar el repositorio que nos proporciona Heroku.
+
+  Para ello, entra en tu cuenta de Heroku y selecciona tu aplicación.
+
+  Pulsa en el apartado **Deploy**. Luego en **Deployment method**, selecciona **GitHub** en lugar de Heroku Git. En el siguiente apartado deberás indicar el repositorio de GitHub donde tienes el código de la aplicación.  
+
+  ![Despliegue en Heroku de repositorio GitHub](deploy-heroku.png)
+
+  A continuación podemos optar por dos tipos de despliegue:
+
+  - Automático
+  - Manual
+
+  El despliegue automático nos permite desentendernos del proceso. Cada vez que realicemos un *push* al repositorio de GitHub, se realizará el despliegue en Heroku. 
+
+  El despliegue automático es menos fiable que el despliegue manual, puesto que podemos realizar un despliegue de código no funcional. Para solucionar esto, marcaremos la casilla **Wait for CI to pass before deploy**. 
+
+  ![Despliegue automático en Heroku de repositorio GitHub si la integración continua (CI) fue bien](deploy-heroku-automatic.png)
+
+  >**NOTA:** Marcar la casilla anterior sólo tiene sentido si utilizas un sistema de integración continua como [Travis CI](https://travis-ci.org). Puedes darte de alta en él con tu identidad de GitHub.
+  >
+  > Previamente deberás haber creado en tu repositorio de GitHub el siguiente archivo **.travis.yml**:
+  >
+  > ```yaml
+  > language: node_js
+  > node_js:
+  >   - "8"
+  > ```
+  >
+  > Una vez iniciada sesión con tu usuario deberás añadir el repositorio de GitHub con el código de tu aplicación. Cada vez que realices un *push* al repositorio en GitHub, TravisCI procederá a realizar la construcción (build). El resultado de la operación se indica mediante una insignia o *badge*, en color verde si todo fue correcto y en color rojo si la construcción dio errores.
+  >
+  >![Travis badge](travis-badge.png)
+
+
 6. ¿Y los datos?
   
   Los datos de la aplicación se guardan en una base de datos. En este caso hemos usado el DBaaS que nos proporciona [mLab](https://mlab.com). 
