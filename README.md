@@ -212,10 +212,12 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
   > Ahora podrás realizar un *push* o modificación a algún archivo del repositorio GitHub y verás a TravisCI en acción. 
   > 
   > Si has realizado todos los pasos anteriores correctamente verás que en tu repositorio GitHub te aparece un nuevo apartado de **environment**.
-  > ![GitHub environment](snaphots/github-environment.png)
+  >
+  >![GitHub environment](snapshots/github-environment.png)
   >
   > Además, en **Settings -> Webhooks** debes ver los *webhooks* a TravisCI y Heroku.
-  > ![GitHub settings - Webhooks](snaphots/github-webhooks.png)
+  >
+  >![GitHub settings - Webhooks](snapshots/github-webhooks.png)
 
 6. ¿Y los datos?
   
