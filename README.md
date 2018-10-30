@@ -205,9 +205,9 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
   >   - "8"
   > ```
   >
-  > Una vez iniciada sesión con tu usuario deberás añadir el repositorio de GitHub con el código de tu aplicación. Cada vez que realices un *push* al repositorio en GitHub, TravisCI procederá a realizar la construcción (build). El resultado de la operación se indica mediante una insignia o *badge*, en color verde si todo fue correcto y en color rojo si la construcción dio errores.
+  > Una vez iniciada sesión en TravisCI, deberás añadir el repositorio de GitHub con el código de tu aplicación. Cada vez que realices un *push* al repositorio en GitHub, TravisCI procederá a realizar la construcción (build). El resultado de la operación se indica mediante una insignia o *badge*, en color verde si todo fue correcto y en color rojo si la construcción dio errores.
   >
-  >![Travis badge](snapshots/travis-badge.png)
+  >![Travis badge](snapshots/badge-travis.png)
 
 
 6. ¿Y los datos?
