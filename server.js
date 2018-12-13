@@ -15,7 +15,7 @@ mongoose.connect(config.db_uri, { useNewUrlParser: true })
 // --- MIDDLEWARE
 app.use(express.static(path.join(__dirname , 'public'))); // Archivos estáticos
 app.use(express.json());                                  // Soporte de JSON
-app.use('/api',  routes);                                // Rutas
+app.use('/api', routes);                                  // Rutas
 
 // ---- PUERTO DE ESCUCHAb
 app.listen (config.port, () => console.log(`Servidor iniciado en puerto ${config.port}`));
