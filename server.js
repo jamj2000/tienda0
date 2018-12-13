@@ -1,3 +1,4 @@
+// --- IMPORTACIONES
 const path     = require('path');
 const express  = require('express');
 const mongoose = require('mongoose');
@@ -6,18 +7,15 @@ const config   = require('./config');
 
 const app      = express();
 
-// --------------------- Conexión a Base de Datos
+// --- CONEXIÓN A BASE DATOS
 mongoose.connect(config.db_uri, { useNewUrlParser: true })
   .then(db   => console.log ('Conexión correcta a la BD'))
   .catch(err => console.log ('Error en la conexión a la BD'));
 
-// --------------------- Middleware
-// Archivos estáticos
-app.use(express.static(path.join(__dirname , 'public')));
-// Soporte de JSON
-app.use(express.json());
-// Rutas
-app.use ('/api',  routes);
+// --- MIDDLEWARE
+app.use(express.static(path.join(__dirname , 'public'))); // Archivos estáticos
+app.use(express.json());                                  // Soporte de JSON
+app.use ('/api',  routes);                                // Rutas
 
-// --------------------- Inicio del Servidor web
+// ---- PUERTO DE ESCUCHAb
 app.listen (config.port, () => console.log(`Servidor iniciado en puerto ${config.port}`));
