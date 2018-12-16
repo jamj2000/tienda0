@@ -152,7 +152,7 @@ Si deseas hacer un despligue usando los servicios proporcionados por los sitios 
 4. Inicia sesión desde el terminal en la cuenta que previamente creaste en Heroku. Y crea una nueva aplicación. 
   
   ```bash
-  heroku login
+  heroku login --interactive
   heroku create --region eu  nombre_aplicacion
   ```
   
