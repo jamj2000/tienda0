@@ -9,6 +9,11 @@
 ![Express](https://img.shields.io/badge/Express-4.16.3-blue.svg)
 ![Mongoose](https://img.shields.io/badge/Mongoose-5.2.3-blue.svg)
 
+**Existe una versión más moderna de esta aplicación.** Puedes acceder a ella en el siguiente enlace:
+
+- [TienDAW](https://github.com/jamj2000/tiendaw)
+
+
 ## Introducción
 
 Este es un proyecto realizado con fines educativos. Actualmente está desplegado en [Heroku](https://tienda0.herokuapp.com/).
