@@ -17,5 +17,5 @@ app.use(express.static(path.join(__dirname , 'public'))); // Archivos estáticos
 app.use(express.json());                                  // Soporte de JSON
 app.use('/api', routes);                                  // Rutas
 
-// ---- PUERTO DE ESCUCHAb
+// ---- PUERTO DE ESCUCHA
 app.listen (config.port, () => console.log(`Servidor iniciado en puerto ${config.port}`));
