@@ -58,17 +58,20 @@ Los archivos utilizados son los siguientes:
 ├── README.md
 └── routes.js
 ```
-
-
-Para el BackEnd los archivos necesarios son:
+Para la **gestión del proyecto y dependencias**:
 
 - package.json
+- package-lock.json
+
+
+Para el **BackEnd** los archivos necesarios son:
+
 - index.js
 - config.js
 - models.js
 - routes.js
 
-Para el FrontEnd los archivos necesarios, según la App, son:
+Para el **FrontEnd** los archivos necesarios, según la App, son:
 
 - App0
   - public/favicon.png
