@@ -13,6 +13,12 @@
 
 - [TienDAW](https://github.com/jamj2000/tiendaw)
 
+**Asimismo, existe una versión donde backend y frontend están separados.** Puedes acceder a ella en:
+
+- [tiendabackend](https://github.com/jamj2000/tiendabackend)
+- [tiendafrontend](https://github.com/jamj2000/tiendafrontend)
+
+
 
 ## Introducción
 
